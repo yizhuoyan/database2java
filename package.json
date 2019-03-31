@@ -1,0 +1,18 @@
+{
+  "name": "table2java",
+  "version": "1.0.0",
+  "description": "table2java",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron  .",
+		"packager": "electron-packager . table2java --win --out ./out --arch=x64 --app-version=1.0.0 --electron-version=4.1.2 --overwrite"
+  },
+  "author": "yizhuoyan@hotmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^4.1.2"
+  },
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}

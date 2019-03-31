@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>DB2Java</title>
+		<link rel="stylesheet" href="css/layout.css">
+		<style>
+			html{
+				height: 100%;
+			}
+			body{
+				margin: 0;
+				padding: 1em;
+				max-height: 100%;
+				height: 100%;
+				min-width: 1000px;
+				box-sizing: border-box;
+			}
+			table{
+				border-collapse: collapse;
+				width: 100%;
+			}
+			td,th{
+				border: 1px solid black;
+			}
+			.table-list-view{
+				border: 1px solid black;
+				padding: 5px;
+				overflow: auto;
+				flex: auto;
+				margin-right: 5px;
+			}
+			.options-view{
+				border: 1px solid black;
+				padding: 5px;
+				flex: auto;
+			}
+			
+			
+		</style>
+	</head>
+	<body class="layout-vbox">
+		<head>
+			<h1>DataBase生成Java源代码</h1>
+		</head>
+		<section style="padding: 1em 0">
+			<p>
+				<label>
+					数据库产品:
+					<select id="database-product">
+						<option>MySQL</option>
+					</select>
+				</label>
+				<label>
+					HOST:<input id="host" type="text" style="width:150px;" maxlength="15" value="127.0.0.1" required>
+				</label>
+				<label>
+					端口:<input id="port" type="text" style="width:70px;" maxlength="5" value="3306" required>
+				</label>
+				<label>
+					数据库:<input id="database" type="text" value="vip" style="width:200px;" required>
+				</label>
+			</p>
+			
+			<p>
+			<label>
+				账号:<input id="username" type="text" style="width:150px;" value="root" required>
+			</label>
+			<label>
+				密码:<input id="password" type="text" style="width:150px;" value="root" required>
+			</label>
+
+			<button id="connectionBtn" type="button">连接数据库</button>
+			</p>
+		</section>
+		<section class="grow layout-hbox">
+			<div class="table-list-view">
+				<h2 class="center">请选择要生成的表</h2>
+				<table class="data">
+					<thead>
+						<tr>
+							<th width="20px">#</td>
+							<th colspan="2">表名</th>
+							<th>类名</th>
+						</tr>
+					</thead>
+					<tbody id="table-list-view-tbody">
+						<script id="paintTablesList(tables)" type="text/template">
+							<- for(let i=0,row;i<tables.length;i++){row=tables[i]; ->			
+						<tr>
+							
+							<td style="text-align: center;">
+								$(i)
+							</td>
+							<td style="text-align: center;width:20px">
+								<input type="checkbox" checked name="tableName" value="$(row.tableName)">
+							</td>	
+							<td style="text-align: left;">
+								$(row.tableName)
+							</td>
+							<td style="text-align: left;">
+								<input type="text" style="width:100%" id="$(row.tableName)-classNameInput" value="$(row.className)">
+							</td>
+						</tr>
+						<-}->
+						</script>
+					</tbody>
+				</table>
+			</div>
+			<div class="options-view">
+				
+				<p>
+					下划线分隔列名转换为
+					<select id="underlineSelect">
+						<option value="camel">驼峰命名</option>
+						<option value="keep">保持原样</option>
+					</select>
+				</p>
+				<p>datetime转换为
+					<select id="datetimeSelect">
+						<option>java.time.LocalDateTime</option>
+						<option>java.util.Date</option>
+						<option>java.time.Instant</option>
+					</select></p>
+				<p>timestamp转换为
+					<select id="timestampSelect">
+						<option>java.time.LocalDateTime</option>
+						<option>java.util.Date</option>
+						<option>java.time.Instant</option>
+					</select></p>
+				<p>date转换为
+					<select id="dateSelect">
+						<option>java.time.LocalDate</option>
+						<option>java.util.Date</option>
+						<option>java.time.Instant</option>
+					</select>
+				</p>
+					
+				<hr>	
+				<p class="layout-hbox-center">
+					<span>　类包名:</span>
+					<input id="packageInput" type="text" class="grow" value="com.entity">
+				</p>
+				<p class="layout-hbox-center">
+					<span>
+						存放目录:
+					</span>
+					<input id="saveDirFileInput" 
+					onchange="saveDirInput.value=this.files[0].path" 
+					hidden type="file" webkitdirectory directory>
+					<input id="saveDirInput" type="text" value="d:/test" class="grow" readonly>
+					<label class="btn" for="saveDirFileInput">
+						选择
+					</label>
+					
+				<p>
+				<p>
+					<button class="D3"style="width: 10em;"sty id="action-btn">生成</button>
+				</p>
+			</div>
+		</section>
+		<script src="js/util/yi.toast.js"></script>
+		<script src="js/util/yi.template.js"></script>
+		<script src="js/util/$.js"></script>
+		<script src="js/controller.js"></script>
+	</body>
+</html>

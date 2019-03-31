@@ -1,0 +1,232 @@
+article,header,footer,section,aside,main,
+figcaption,figure,
+fieldset,p,div{
+    box-sizing: border-box;
+    display: block;
+}
+h1,h2{
+	margin: 0;
+}
+.center{
+	text-align: center;
+}
+.layout-hbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.layout-hbox > .grow {
+    flex: auto;
+}
+.layout-hbox-center {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.layout-hbox-center > .grow {
+    flex: auto;
+}
+.layout-justify {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.layout-justify-stretch{
+	display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.layout-middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.layout-vbox {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.layout-vbox > .grow {
+    flex: auto;
+	overflow: auto;
+}
+
+
+
+table.data {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+ table.data th {
+     border: 1px solid #81b4be;
+     padding: 5px 0;  
+}
+
+table.data td{
+	border: 1px solid #ccc;
+	padding: 5px 5px;
+}
+
+table.data > thead>tr {
+    background-color: hsl(243,30%,50%);
+    font-weight: bold;
+    height: 2em;
+    color:#ffffff;
+}
+
+table.data>tr,table.data>tbody>tr {
+    background-color: #ffffff;
+    color:hsl(0,0%,5%)
+}
+
+
+
+table.data>tr:nth-child(even),table.data>tbody>tr:nth-child(even) {
+    background-color: hsl(60,50%,97%);
+}
+
+table.data>tr:HOVER,table.data>tbody>tr:HOVER {
+    background-color: hsl(60,50%,90%);
+    color:hsl(0,0%,0%)
+}
+button, .btn{
+    border: 1px solid #204d74;
+    border-radius: 4px;
+    background: #286090 none;
+    color: #eeeeff;
+    cursor: pointer;
+    font-size: 100%;
+    font-family: sans-serif, "宋体";
+    font-weight: bold;
+    line-height: 1.15; 
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 8px 15px;
+    margin: 0; 
+}
+
+
+button:HOVER, .btn:HOVER {
+    color: #ffffff;
+    background-color: #df2e1b;
+    border-color: #c42818;
+}
+
+button:ACTIVE, .btn:ACTIVE {
+    color: #ffffff;
+    background-color: #2f2f2f;
+    border-bottom-color: #eee;
+    border-right-color: #eee;
+}
+
+button[disabled], [disabled].btn {
+    cursor: wait;
+    color: #eeeeff;
+    background-color: gray;
+    border-color: #204d74;
+}
+
+
+
+a.btn {
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/**两个按钮有距离*/
+button + button,
+button + .btn,
+.btn + button,
+.btn + .btn {
+    margin-left: 1em;
+}
+
+button.D3, .btn.D3 {
+    background-color: #DB5705;
+    border-radius: 8px;
+    box-shadow: 0px 9px 0px rgba(219, 31, 5, 1), 0px 9px 25px rgba(0, 0, 0, .7);
+    transition: all .1s ease;
+}
+
+.D3:HOVER {
+    background-color: #D56f0B;
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+select,
+textarea {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 100%; 
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    padding-left: .5em;
+    line-height: 1.15;
+    min-height: 40px;
+    min-width:0;
+    width:auto;
+    font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei";
+}
+input:focus, textarea:focus,select:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+input:hover, textarea:hover,select:hover {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 133, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 133, .6);
+}
+
+input[readonly], textarea[readonly],select[readonly]{
+    background: #eeeeee;
+    color: #000;
+}
+
+input[disabled], textarea[disabled],select[disabled]{
+    background: #F0FFFF !important;
+    color: #808080; !important;
+}
+
+textarea {
+    padding-right: .5em;
+    text-indent: 0;
+    vertical-align: top;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
